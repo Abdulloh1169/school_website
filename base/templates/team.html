@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      
+        <title>Jamoa - 193-umumiy o'rta ta'lim maktabi</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+      
+        <!-- Favicons -->
+        <link href="{%static 'assets/img/favicon.png'%}" rel="icon">
+        <link href="{% static 'assets/img/apple-touch-icon.png' %} " rel="apple-touch-icon">
+      
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'assets/vendor/aos/aos.css' %} " rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
+        <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %} " rel="stylesheet">
+        <link href="{% static 'assets/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
+        <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %} " rel="stylesheet">
+      
+        <!-- Template Main CSS File -->
+        <link href="{% static 'assets/css/style.css' %} " rel="stylesheet">
+      
+        <!-- =======================================================
+        * Template Name: Bethany - v4.0.1
+        * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
+    </head>
+    <body>
+      {% include "head.html" %}
+
+      <!-- ======= Team Section ======= -->
+      <section id="team" class="team">
+          <div class="container">
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-title" data-aos="fade-right">
+                  <h2>Maktab jamoasi</h2>
+                  <p>Bizning inoq va ahil jamoa.</p>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="row">
+
+                  {% for teacher in teachers %}
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                      <div class="pic"><img src="{{ teacher.image.url }}" style="height: 200px;" alt="{{ teacher }}"></div>
+                      <div class="member-info">
+                        <h4>{{teacher}}</h4>
+                        <span>{{teacher.jobs}}</span>
+                        
+                        <div class="social">
+                          {% if teacher.twitter %}
+                            <a href="{{teacher.twitter}}" target="_blank"><i class="ri-twitter-fill"></i></a>
+                          {% endif %}
+                          {% if teacher.telegram %}
+                            <a href="{{teacher.telegram}}" targer="_blank"><i class="ri-facebook-fill"></i></a>
+                          {% endif %}
+                          {% if teacher.instagaram %}
+                            <a href="{{teacher.instagaram}}" target="_blank"><i class="ri-instagram-fill"></i></a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section><!-- End Team Section -->
+        
+        {% include 'footer.html' %}
+
+
+      <!--JavaScript links-->
+      
+      <!-- Vendor JS Files -->
+      <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+      <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
+      <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %} "></script>
+      <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %} "></script>
+      <script src="{% static 'assets/vendor/purecounter/purecounter.js' %} "></script>
+      <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %} "></script>
+
+      <!-- Template Main JS File -->
+      <script src="{% static 'assets/js/main.js' %} "></script>
+
+    </body>
+</html>

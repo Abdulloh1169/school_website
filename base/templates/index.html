@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MySchool - 193-umumiy o'rta ta'lim maktabi </title>
+
+  <!-- Favicons -->
+  <link href="{%static 'assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %} " rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %} " rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %} " rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %} " rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %} " rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Bethany - v4.0.1
+  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <h1 class="text-light"><a href="{% url 'home' %}"><span>MySchool</span></a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            {% if services %}
+            <li><a class="nav-link scrollto" href="#services">Xizmatlar</a></li>
+            {% endif %}
+            <li><a class="nav-link scrollto " href="#ourschool">Maktabimiz</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Aloqa</a></li>
+            <li><a class="getstarted scrollto" href="{% url 'team' %}">Jamoa</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div><!-- End Header Container -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+      <h1>193 - Umumiy o'rta ta'lim maktabi</h1>
+      <h2>Toshkent shahar, Uchtepa tumani</h2>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{info.all_children}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>O'quvchilar</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{info.all_team}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Maktab mamuriyati</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{info.all_extra_lessons}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>To'garaklar</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{info.all_classes}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Sinflar</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= News Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title" data-aos="fade-right">
+              <h2>Yangiliklar</h2>
+              <p>Maktabimizda sodir bo'layotgan barcha tadbirlar va yangiliklardan bohabar bo'ling.</p>
+            </div>
+          </div>
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                
+                <!--Logic section-->  
+                {% for item in news %}
+                <div class="col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+                  <a href="{% url 'news' item.id %}">
+                    <div class="icon-box mt-4 mt-xl-0">
+                      <img src="{{item.image.url}}" style="height:200px;">
+                      <h4>{{item.title}}</h4>
+                      <p>{{item.description}}</p>
+                    </div>
+                  </a>
+                </div>
+                {% empty %}
+                <h4>Hozircha yangiliklar mavjut emas.</h4>
+                {% endfor %} 
+              
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- News Section -->
+
+
+    <!-- ======= Services Section ======= -->
+    {% if services %}
+    <section id="services" class="services section-bg">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="section-title" data-aos="fade-right">
+              <h2>Online xizmatlar</h2>
+              <p>Maktabimiz tomonidan ko'rsatilgan barcha online xizmatlar ro'yxati shu yerda</p>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="row">
+              
+              {% for service in services %}
+              
+              <div class="col-md-4 col-sm-6 col-xs-12 d-flex align-items-stretch my-2">
+                <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+                  <a href="{{service.link}}" target="_blank">
+                  <div class="icon"><i class="{{service.icon}}"></i></div>
+                  <h4>{{service.title}}</h4>
+                  </a>
+                  <p>{{service.description}}</p>
+                </div>
+              </div>
+    
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    {% endif %}
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="ourschool" class="portfolio">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-left">
+          <h2>Bizning Maktab</h2>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          
+          {% for img in my_school %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="{{ img.image.url }}" class="img-fluid" style="width: 100%;" alt="{{ img.alt }}">
+              <div class="portfolio-info">
+                <h4>{{img.alt}}</h4>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="section-title" data-aos="fade-right">
+              <h2>Tarix Ibratlari</h2>
+            </div>
+          </div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+
+                {% for i in quotes %}
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      {{i.body}}
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <h3>{{i.author}}</h3>
+                  </div>
+                </div><!-- End testimonial item -->
+                {% endfor %}
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <div class="section-title">
+              <h2>Biz bilan aloqa</h2>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+            <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5995.065139236466!2d69.17170861446567!3d41.29727652236254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae89133b2058fb%3A0x9df56d843ed6374!2sShkola%20193!5e0!3m2!1sen!2s!4v1617722948798!5m2!1sen!2s" frameborder="0" allowfullscreen></iframe>
+            <div class="info mt-4">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Location:</h4>
+              <p>{{info.location}}</p>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mt-4">
+                <div class="info">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>{{info.email}}</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="info w-100 mt-4">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>{{info.phone}}</p>
+                </div>
+              </div>
+            </div>
+            
+              <form action="send/" method="post" role="form" class="form-for-mail mt-4">
+                {% if sent %}
+                  <h3>
+                    Sizning habaringoz muvofaqiyatli yuborildi
+                  </h3>
+                
+                {% else %}
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Ismingiz" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Elektron pochtangiz" required>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Mavzu" required>
+                  </div>
+                  <div class="form-group mt-3">
+                    <textarea class="form-control" name="message" rows="10" placeholder="Xabar" required></textarea>
+                  </div>
+                  <div class="text-center"><button type="submit">Yuborish</button></div>
+                {% endif %}
+              </form>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  {% include 'footer.html' %}
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %} "></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %} "></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter.js' %} "></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %} "></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %} "></script>
+
+</body>
+
+</html>

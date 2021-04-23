@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send message to user</title>
+
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container-fluid align-content-center m-6">
+        <form action="" method="post">{% csrf_token %}
+            <div class="card col-sm-8 col-md-6 col-lg-4 mx-auto my-5">
+            <h2 class="card-header">Answer to user</h2>
+            <div class="form-group row m-2">
+                <label class="col-sm-4 col-form-label"><b>School Email:</b></label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext"  value="{{obj.email}}">
+                </div>
+                <label class="col-sm-4 col-form-label"><b>User Email:</b></label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext"  value="{{user.email}}">
+                </div>
+            </div>
+            <hr style="margin: 0px 15px;">
+            {% if error %}
+                <div class="col-12">
+                    <p style="background-color: rgba(255, 0, 0, 0.377);
+                    border: 1px solid red; border-radius:5px;" class="p-1 m-1 text-red">Habar yuborilmadi</p>    
+                </div> 
+            {% endif %} 
+            <div class="form-group m-2">
+                <label for="subject"><b>Subject</b></label>
+                <input type="text" class="form-control col-md-6" id="subject" name="subject" required>
+            </div>
+            <div class="form-group m-2">
+                <label for="message"><b>Message</b></label>
+                <textarea class="form-control" id="message" name="message" maxlength="1500" rows="7" required></textarea>
+            </div>
+            <input type="submit" value="Send" class="btn btn-primary m-2">
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

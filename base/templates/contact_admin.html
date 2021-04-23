@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MySchool - Admin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+
+  <!-- =======================================================
+  * Template Name: Bethany - v4.0.1
+  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">MySchool</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="">
+      <div class="navbar-nav">
+        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+        <a class="nav-link" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="container">
+        <div class="row">
+            {% for message in messages %}
+            <div class="col-sm-12 my-4 mx-2">
+                <div class="card">
+                    <div class="card-header d-flex">
+                      <div>
+                        <h5>{{message.name}} ({{message.email}})</h5>
+                      </div>
+                      <div class="ms-auto">
+                        <p>{{message.date| date:"Y-m-d"}}  <b>{{message.date| date:"H:m"}}</b></p> 
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">{{message.subject}}</h5>
+                      <p class="card-text">{{message.message}}</p>
+                      <div class="d-flex bd-highlight">
+                        <div class="px-2 bd-highlight">
+                          <a href="{% url 'generate' message.id 'mark' %}" class="btn btn-sm btn-primary">Mark as read</a>
+                        </div>
+                        <div class="px-2 bd-highlight">
+                          <a href="{% url 'generate' message.id 'answer' %}" class="btn btn-sm btn-warning">Answer</a>
+                        </div>
+                        <div class="px-2 bd-highlight">
+                          <a href="{% url 'generate' message.id 'del' %}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                        <div class="ms-auto px-2 bd-highlight"><b>{% if message.checked %}Ko'rilgan{% else %}Yangi{% endif %}</b></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+  </main><!-- End #main -->
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
