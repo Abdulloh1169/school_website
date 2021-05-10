@@ -43,7 +43,7 @@
       <section id="team" class="team">
           <div class="container">
 
-            <div class="row">
+            <div class="row d-flex">
               <div class="col-lg-12">
                 <div class="section-title" data-aos="fade-right">
                   <h2>Maktab jamoasi</h2>
@@ -54,7 +54,7 @@
                 <div class="row">
 
                   {% for teacher in teachers %}
-                  <div class="col-lg-4 col-sm-6">
+                  <div class="col-lg-4 col-sm-6 d-flex my-2">
                     <div class="member" data-aos="zoom-in" data-aos-delay="100">
                       <div class="pic"><img src="{{ teacher.image.url }}" style="height: 200px;" alt="{{ teacher }}"></div>
                       <div class="member-info">
